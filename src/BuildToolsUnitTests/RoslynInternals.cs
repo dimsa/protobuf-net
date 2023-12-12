@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
 using ProtoBuf.BuildTools.Internal;
 using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysisNew;
 using System.Text;
 using System.Threading;
 
@@ -44,7 +44,7 @@ namespace BuildToolsUnitTests
             private readonly ImmutableDictionary<string, string> _values;
             public InMemoryConfigOptions(ImmutableDictionary<string, string> values)
                 => _values = values;
-            public override bool TryGetValue(string key, [NotNullWhen(true)] out string? value)
+            public override bool TryGetValue(string key, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? value)
                 => _values.TryGetValue(key, out value);
         }
     }
@@ -92,6 +92,6 @@ namespace BuildToolsUnitTests
             _backing = properties;
         }
 
-        public override bool TryGetValue(string key, [NotNullWhen(true)] out string? value) => _backing.TryGetValue(key, out value);
+        public override bool TryGetValue(string key, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? value) => _backing.TryGetValue(key, out value);
     }
 }
